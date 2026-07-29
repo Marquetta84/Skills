@@ -2,26 +2,42 @@
    Prominent Roofing — Memphis, TN
    ========================================================================== */
 
-/* --- Tokens ------------------------------------------------------------- */
+/* --- Tokens ---------------------------------------------------------------
+   Monochrome. The neutrals carry a faint cool cast rather than sitting on a
+   dead grey axis — slate, graphite, galvanised zinc, the materials actually
+   on a roof. Emphasis comes from contrast, weight, and scale, not hue.
+   -------------------------------------------------------------------------- */
 :root{
-  --ink:#14161C;          /* storm slate */
-  --bluff:#1D2330;        /* secondary dark panel */
-  --brick:#B3352C;        /* Memphis brick red — primary action */
-  --brick-dk:#8E2822;
-  --brick-lt:#C9463C;
-  --neon:#F2A93B;         /* Beale marquee amber — accent */
-  --neon-dk:#D98F22;
-  --zinc:#EAECEF;         /* cool pale slate section bg */
-  --zinc-dp:#DDE0E5;
+  --ink:#0C0E11;          /* near-black ground */
+  --bluff:#171A1F;        /* secondary dark panel */
+  --slate:#565D66;        /* mid neutral — labels and quiet marks */
+
+  --mark:#0C0E11;         /* structural emphasis on light grounds */
+  --mark-dp:#000;
+  --mark-hi:#2A3037;
+  --mark-inv:#fff;        /* structural emphasis on dark grounds */
+  --mark-inv-dp:#B4BAC1;
+
+  /* The single accent. Black, white and zinc carry all the mass; red is
+     spent only on actions and small marks, which is what makes it read as
+     a pop rather than a second theme colour. Two values, one hue: --red
+     is tuned for light grounds, --red-lt for dark ones. */
+  --red:#CE1126;          /* 5.6:1 as white-on-red and as red-on-white */
+  --red-dp:#9E0C1D;       /* pressed shadow */
+  --red-hi:#E31832;       /* hover */
+  --red-lt:#F5333F;       /* 5.0:1 on the near-black ground */
+
+  --zinc:#ECEDEF;         /* cool pale section ground */
+  --zinc-dp:#DFE1E4;
   --white:#fff;
 
-  --tx:#3F4650;           /* body copy on light */
-  --tx-mute:#5E6672;   /* AA on both white and --zinc */
-  --tx-dark:#0E1015;      /* headings on light */
+  --tx:#3A4048;           /* body copy on light */
+  --tx-mute:#5C636C;      /* AA on white and on --zinc */
+  --tx-dark:#0A0C0F;      /* headings on light */
   --tx-inv:rgba(255,255,255,.74);
 
-  --line:#D9DDE3;
-  --line-dk:rgba(255,255,255,.13);
+  --line:#D7DADE;
+  --line-dk:rgba(255,255,255,.14);
 
   --disp:'Big Shoulders Display','Haettenschweiler','Arial Narrow',
          system-ui,sans-serif;
@@ -52,23 +68,33 @@ h1,h2,h3,h4{margin:0;font-family:var(--disp);font-weight:800;
 p{margin:0}
 ul{margin:0;padding:0;list-style:none}
 
-:focus-visible{outline:3px solid var(--neon);outline-offset:3px;border-radius:2px}
+:focus-visible{outline:3px solid var(--mark);outline-offset:3px;border-radius:2px}
+.on-dark :focus-visible,.util :focus-visible,.foot :focus-visible,
+.drawer :focus-visible,.cta :focus-visible,.stats :focus-visible,
+.callbar :focus-visible,.hero :focus-visible{outline-color:var(--mark-inv)}
+
+/* Photography runs monochrome so the whole page reads black and white.
+   This is the single switch: delete this rule to bring the colour back.
+   The source JPEGs are untouched full-colour files. */
+.hero__bg img,.svc__media img,.why__fig img,.proj__item img{
+  filter:grayscale(1) contrast(1.06);
+}
 
 .wrap{width:100%;max-width:var(--wrap);margin-inline:auto;padding-inline:var(--gut)}
 .sec{padding-block:var(--pad)}          /* the ONLY vertical spacing utility */
 .sec--tight{padding-block:calc(var(--pad) * .62)}
 
-.skip{position:absolute;left:-9999px;top:0;z-index:200;background:var(--neon);
-  color:var(--ink);padding:12px 20px;font-weight:700}
+.skip{position:absolute;left:-9999px;top:0;z-index:200;background:var(--mark);
+  color:#fff;padding:12px 20px;font-weight:700}
 .skip:focus{left:8px;top:8px}
 
 /* --- Shared type patterns ---------------------------------------------- */
 .eyebrow{
   font-family:var(--mono);font-size:11.5px;font-weight:700;
-  letter-spacing:.24em;text-transform:uppercase;color:var(--brick);
+  letter-spacing:.24em;text-transform:uppercase;color:var(--red);
   display:block;margin-bottom:14px;
 }
-.eyebrow--neon{color:var(--neon)}
+.eyebrow--inv{color:var(--red-lt)}
 .eyebrow--rule{display:flex;align-items:center;justify-content:center;gap:14px}
 .eyebrow--rule::before,.eyebrow--rule::after{
   content:"";height:1px;width:clamp(22px,6vw,52px);background:currentColor;opacity:.55}
@@ -78,8 +104,8 @@ ul{margin:0;padding:0;list-style:none}
 .lede{max-width:62ch;font-size:clamp(15.5px,1.6vw,17.5px);color:var(--tx-mute);margin-top:18px}
 .head-c{text-align:center}
 .head-c .lede{margin-inline:auto}
-.accent{color:var(--brick)}
-.accent-neon{color:var(--neon)}
+.accent{color:var(--red)}
+.accent-inv{color:var(--red-lt)}
 
 .on-dark{color:var(--tx-inv)}
 .on-dark h1,.on-dark h2,.on-dark h3,.on-dark h4{color:#fff}
@@ -97,10 +123,10 @@ ul{margin:0;padding:0;list-style:none}
 }
 .btn:hover{transform:translateY(-2px)}
 .btn:active{transform:translateY(0)}
-.btn--brick{background:var(--brick);color:#fff;box-shadow:0 6px 0 -1px var(--brick-dk)}
-.btn--brick:hover{background:var(--brick-lt)}
-.btn--neon{background:var(--neon);color:var(--ink);box-shadow:0 6px 0 -1px var(--neon-dk)}
-.btn--neon:hover{background:#F7BA57}
+/* primary action, on light grounds or dark — red always means 'do this' */
+.btn--solid,.btn--inv{background:var(--red);color:#fff;
+  box-shadow:0 6px 0 -1px var(--red-dp)}
+.btn--solid:hover,.btn--inv:hover{background:var(--red-hi)}
 .btn--ghost{border-color:rgba(255,255,255,.55);color:#fff}
 .btn--ghost:hover{background:#fff;color:var(--ink);border-color:#fff}
 .btn--ghost-dark{border-color:var(--tx-dark);color:var(--tx-dark)}
@@ -111,13 +137,15 @@ ul{margin:0;padding:0;list-style:none}
 /* --- SIGNATURE: shingle courses -----------------------------------------
    The section about craftsmanship is literally laid up in courses — a
    staggered shingle field, low contrast, at real roof scale. Sections butt
-   flush with no gaps; where a dark one begins, an amber drip-edge marks it.
+   flush with no gaps; where a dark one begins, a white drip-edge marks it.
    ----------------------------------------------------------------------- */
 .courses{
   background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='264' height='88'%3E%3Cg stroke='%23ffffff' stroke-opacity='.06' stroke-width='2' fill='none'%3E%3Cpath d='M0 43 H264 M0 87 H264'/%3E%3Cpath d='M66 0 V43 M198 0 V43'/%3E%3Cpath d='M0 43 V87 M132 43 V87 M264 43 V87'/%3E%3C/g%3E%3C/svg%3E");
   background-repeat:repeat;
 }
-.drip-edge{border-top:3px solid var(--neon)}
+/* .drip-edge: only earns its keep where a dark band meets a dark ground
+   (see .stats). Against a white section above it is invisible. */
+.drip-edge{border-top:3px solid var(--mark-inv)}
 
 /* ==========================================================================
    Utility bar + header
@@ -129,12 +157,12 @@ ul{margin:0;padding:0;list-style:none}
 .util__list{display:flex;flex-wrap:wrap;gap:8px 24px;align-items:center}
 .util__list li{display:flex;align-items:center;gap:8px;white-space:nowrap}
 .util__list li::before{content:"";width:5px;height:5px;border-radius:50%;
-  background:var(--neon);flex:none}
+  background:var(--red-lt);flex:none}
 .util__soc{display:flex;gap:8px}
 .util__soc a{width:28px;height:28px;display:grid;place-items:center;
   border:1px solid rgba(255,255,255,.16);border-radius:var(--r);
   transition:background .16s,border-color .16s,color .16s}
-.util__soc a:hover{background:var(--neon);border-color:var(--neon);color:var(--ink)}
+.util__soc a:hover{background:var(--red);border-color:var(--red);color:#fff}
 .util__soc svg{width:13px;height:13px;fill:currentColor}
 
 .hdr{position:sticky;top:0;z-index:100;background:#fff;
@@ -145,14 +173,14 @@ ul{margin:0;padding:0;list-style:none}
 /* logo */
 .logo{display:flex;align-items:center;gap:12px;flex:none;margin-right:auto}
 .logo__mark{width:44px;height:44px;flex:none;border-radius:var(--r);
-  background:var(--brick);display:grid;place-items:center;position:relative;
+  background:var(--red);display:grid;place-items:center;position:relative;
   box-shadow:inset 0 -3px 0 rgba(0,0,0,.18)}
 .logo__mark svg{width:26px;height:26px;fill:none;stroke:#fff;stroke-width:2.1;
   stroke-linecap:square;stroke-linejoin:miter}
 .logo__txt{display:block;line-height:1}
 .logo__name{font-family:var(--disp);font-weight:900;text-transform:uppercase;
   font-size:23px;letter-spacing:.005em;color:var(--tx-dark);display:block}
-.logo__name b{color:var(--brick);font-weight:900}
+.logo__name b{color:var(--red);font-weight:900}
 .logo__sub{font-family:var(--mono);font-size:9px;letter-spacing:.2em;
   text-transform:uppercase;color:var(--tx-mute);display:block;margin-top:4px}
 
@@ -162,7 +190,7 @@ ul{margin:0;padding:0;list-style:none}
   font-size:16.5px;letter-spacing:.05em;color:var(--tx-dark);
   padding:6px 0;position:relative;white-space:nowrap}
 .nav a::after{content:"";position:absolute;left:0;right:100%;bottom:0;height:2.5px;
-  background:var(--brick);transition:right .22s var(--ease)}
+  background:var(--red);transition:right .22s var(--ease)}
 .nav a:hover::after,.nav a[aria-current="page"]::after{right:0}
 
 .hdr__cta{display:flex;align-items:center;gap:16px;flex:none}
@@ -196,7 +224,7 @@ ul{margin:0;padding:0;list-style:none}
 .drawer nav{display:flex;flex-direction:column}
 .drawer nav a{font-family:var(--disp);font-weight:800;text-transform:uppercase;
   font-size:26px;color:#fff;padding:14px 0;border-bottom:1px solid var(--line-dk)}
-.drawer nav a:hover{color:var(--neon)}
+.drawer nav a:hover{color:var(--mark-inv)}
 .drawer__foot{margin-top:auto;padding-top:28px}
 .drawer__foot .btn{width:100%}
 .drawer__tel{display:block;text-align:center;margin-top:16px;font-family:var(--disp);
@@ -221,21 +249,20 @@ ul{margin:0;padding:0;list-style:none}
 .hero__in{position:relative;text-align:center;padding-block:clamp(70px,11vw,120px)}
 .hero h1{font-size:clamp(44px,8.6vw,104px);color:#fff;letter-spacing:-.005em;
   text-shadow:0 2px 30px rgba(0,0,0,.35)}
-/* On dark grounds amber carries the emphasis — it sits with the shingle
-   tones and leaves brick red to read as the button, not competing with it. */
-.hero h1 em{font-style:normal;color:var(--neon);display:inline}
+/* the single biggest hit of accent on the page */
+.hero h1 em{font-style:normal;color:var(--red-lt);display:inline}
 .hero .lede{max-width:60ch;margin:22px auto 0;color:rgba(255,255,255,.86);
   text-shadow:0 1px 14px rgba(0,0,0,.5)}
 .hero__btns{display:flex;flex-wrap:wrap;gap:14px;justify-content:center;margin-top:34px}
-.hero .eyebrow{color:var(--neon)}
+.hero .eyebrow{color:var(--mark-inv)}
 
 /* stats band — flush to the hero, no gap */
-.stats{background:var(--bluff);border-top:3px solid var(--neon)}
+.stats{background:var(--bluff);border-top:3px solid var(--red)}
 .stats__grid{display:grid;grid-template-columns:1fr;text-align:center}
 .stats__item{padding:26px 18px;border-bottom:1px solid var(--line-dk)}
 .stats__item:last-child{border-bottom:0}
 .stats__n{font-family:var(--disp);font-weight:900;font-size:clamp(38px,5.6vw,52px);
-  color:var(--neon);line-height:1;display:block}
+  color:var(--red-lt);line-height:1;display:block}
 .stats__l{font-family:var(--mono);font-size:10.5px;letter-spacing:.2em;
   text-transform:uppercase;color:rgba(255,255,255,.55);display:block;margin-top:9px}
 
@@ -247,13 +274,13 @@ ul{margin:0;padding:0;list-style:none}
 .quote__copy h2{font-size:clamp(32px,4.6vw,50px)}
 .quote__pts{margin-top:26px;display:grid;gap:12px}
 .quote__pts li{display:flex;gap:12px;align-items:flex-start;font-size:15.5px}
-.quote__pts svg{width:19px;height:19px;flex:none;margin-top:3px;fill:var(--brick)}
+.quote__pts svg{width:19px;height:19px;flex:none;margin-top:3px;fill:var(--red)}
 
 .card-form{background:#fff;border:1px solid var(--line);border-radius:var(--r);
   padding:clamp(24px,3.6vw,38px);box-shadow:0 18px 44px -22px rgba(20,22,28,.3);
   position:relative}
 .card-form::before{content:"";position:absolute;left:0;right:0;top:0;height:4px;
-  background:var(--brick);border-radius:var(--r) var(--r) 0 0}
+  background:var(--red);border-radius:var(--r) var(--r) 0 0}
 .card-form h3{font-size:clamp(25px,3vw,31px)}
 .card-form .sub{font-size:14.5px;color:var(--tx-mute);margin-top:8px}
 .f-grid{display:grid;gap:12px;margin-top:22px}
@@ -265,17 +292,17 @@ ul{margin:0;padding:0;list-style:none}
   padding:14px 15px;font-size:15px;transition:border-color .16s,background .16s}
 .f-field textarea{min-height:96px;resize:vertical}
 .f-field input:focus,.f-field select:focus,.f-field textarea:focus{
-  background:#fff;border-color:var(--brick);outline:none;
-  box-shadow:0 0 0 3px rgba(179,53,44,.13)}
+  background:#fff;border-color:var(--red);outline:none;
+  box-shadow:0 0 0 3px rgba(206,17,38,.15)}
 .f-field select{appearance:none;background-image:
-  url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 8'%3E%3Cpath fill='%236B737F' d='M1 1l5 5 5-5'/%3E%3C/svg%3E");
+  url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 8'%3E%3Cpath fill='%235C636C' d='M1 1l5 5 5-5'/%3E%3C/svg%3E");
   background-repeat:no-repeat;background-position:right 15px center;background-size:11px;
   padding-right:38px;color:var(--tx)}
 .f-note{font-size:12.5px;color:var(--tx-mute);text-align:center;margin-top:12px}
 .f-msg{display:none;margin-top:14px;padding:14px 16px;border-radius:var(--r);
-  background:#F4EEE9;border-left:3px solid var(--brick);font-size:14.5px;color:var(--tx-dark)}
+  background:var(--zinc);border-left:3px solid var(--red);font-size:14.5px;color:var(--tx-dark)}
 .f-msg[data-show="true"]{display:block}
-.f-msg a{color:var(--brick);font-weight:600;text-decoration:underline}
+.f-msg a{color:var(--red);font-weight:600;text-decoration:underline}
 
 .badges{background:var(--zinc-dp);border-top:1px solid rgba(20,22,28,.07)}
 .badges__grid{display:grid;grid-template-columns:1fr 1fr;gap:22px 18px;
@@ -283,7 +310,7 @@ ul{margin:0;padding:0;list-style:none}
 .badges__item{display:flex;gap:13px;align-items:center}
 .badges__ic{width:44px;height:44px;border-radius:50%;background:var(--ink);flex:none;
   display:grid;place-items:center}
-.badges__ic svg{width:20px;height:20px;fill:var(--neon)}
+.badges__ic svg{width:20px;height:20px;fill:var(--red-lt)}
 .badges__item b{display:block;font-family:var(--disp);font-weight:800;font-size:16.5px;
   text-transform:uppercase;color:var(--tx-dark);line-height:1.1}
 .badges__item small{font-size:12.5px;color:var(--tx-mute);display:block;margin-top:3px}
@@ -293,17 +320,22 @@ ul{margin:0;padding:0;list-style:none}
    ========================================================================== */
 .svc__grid{display:grid;gap:18px;margin-top:clamp(38px,5vw,54px)}
 .svc__card{background:#fff;border:1px solid var(--line);border-radius:var(--r);
-  padding:clamp(24px,3vw,32px);display:flex;flex-direction:column;
+  display:flex;flex-direction:column;overflow:hidden;
   transition:transform .2s var(--ease),box-shadow .2s var(--ease),border-color .2s}
-.svc__card:hover{transform:translateY(-4px);border-color:var(--brick);
-  box-shadow:0 20px 40px -26px rgba(20,22,28,.45)}
-.svc__ic{width:54px;height:54px;border-radius:var(--r);background:#F6ECEA;
-  display:grid;place-items:center;margin-bottom:22px}
-.svc__ic svg{width:25px;height:25px;fill:var(--brick)}
+.svc__card:hover{transform:translateY(-4px);border-color:var(--red);
+  box-shadow:0 20px 40px -26px rgba(12,14,17,.45)}
+
+/* each card leads with the work itself rather than a generic glyph */
+.svc__media{display:block;aspect-ratio:16/10;overflow:hidden;background:var(--zinc)}
+.svc__media img{width:100%;height:100%;object-fit:cover;
+  transition:transform .5s var(--ease),filter .35s var(--ease)}
+.svc__card:hover .svc__media img{transform:scale(1.05)}
+
+.svc__body{padding:clamp(22px,2.6vw,28px);display:flex;flex-direction:column;flex:1}
 .svc__card h3{font-size:21px;letter-spacing:.01em}
 .svc__card p{font-size:14.8px;margin-top:12px;color:var(--tx-mute);flex:1}
 .svc__more{margin-top:20px;text-decoration:none;font-family:var(--mono);font-size:11.5px;font-weight:700;
-  letter-spacing:.16em;text-transform:uppercase;color:var(--brick);
+  letter-spacing:.16em;text-transform:uppercase;color:var(--red);
   display:inline-flex;align-items:center;gap:8px;align-self:flex-start}
 .svc__more span{transition:transform .18s var(--ease);display:inline-block}
 .svc__card:hover .svc__more span{transform:translateX(5px)}
@@ -314,15 +346,15 @@ ul{margin:0;padding:0;list-style:none}
 /* background-color, not the shorthand — the .courses pattern must survive */
 .why{background-color:var(--ink);position:relative;overflow:hidden}
 .why::before{content:"";position:absolute;top:-20%;right:-12%;width:60%;height:120%;
-  background:radial-gradient(closest-side,rgba(179,53,44,.24),transparent);
+  background:radial-gradient(closest-side,rgba(255,255,255,.07),transparent);
   pointer-events:none}
 .why__grid{display:grid;gap:clamp(34px,5vw,64px);align-items:center;position:relative}
-.why__fig{position:relative;border:3px solid var(--neon);border-radius:var(--r);
+.why__fig{position:relative;border:3px solid var(--red);border-radius:var(--r);
   padding:9px;background:rgba(255,255,255,.03)}
 .why__fig img{border-radius:2px;width:100%;aspect-ratio:4/3;object-fit:cover;
   object-position:50% 42%}
 .why__seal{position:absolute;right:-16px;bottom:-16px;width:112px;height:112px;
-  border-radius:50%;background:var(--brick);color:#fff;
+  border-radius:50%;background:var(--red);color:#fff;
   display:flex;flex-direction:column;align-items:center;justify-content:center;
   text-align:center;border:6px solid var(--ink);line-height:1}
 .why__seal b{font-family:var(--disp);font-weight:900;font-size:34px;display:block}
@@ -332,7 +364,7 @@ ul{margin:0;padding:0;list-style:none}
 .why__list{display:grid;grid-template-columns:1fr;gap:12px;margin-top:30px}
 .why__list li{display:flex;gap:11px;align-items:flex-start;font-size:15px;
   color:rgba(255,255,255,.82)}
-.why__list svg{width:20px;height:20px;flex:none;margin-top:2px;fill:var(--neon)}
+.why__list svg{width:20px;height:20px;flex:none;margin-top:2px;fill:var(--red-lt)}
 .why .btn{margin-top:34px}
 
 /* ==========================================================================
@@ -342,9 +374,9 @@ ul{margin:0;padding:0;list-style:none}
 .proc__grid{display:grid;gap:16px;margin-top:clamp(38px,5vw,54px);position:relative}
 .proc__step{background:#fff;border:1px solid var(--line);border-radius:var(--r);
   padding:32px 24px;text-align:center;position:relative}
-.proc__n{width:52px;height:52px;border-radius:50%;background:var(--brick);color:#fff;
+.proc__n{width:52px;height:52px;border-radius:50%;background:var(--red);color:#fff;
   font-family:var(--disp);font-weight:900;font-size:25px;display:grid;place-items:center;
-  margin:0 auto 18px;box-shadow:0 0 0 5px rgba(179,53,44,.13)}
+  margin:0 auto 18px;box-shadow:0 0 0 5px rgba(206,17,38,.16)}
 .proc__step h3{font-size:18px}
 .proc__step p{font-size:14.3px;color:var(--tx-mute);margin-top:11px}
 
@@ -372,11 +404,11 @@ ul{margin:0;padding:0;list-style:none}
 .rev__q{font-family:var(--disp);font-size:44px;color:var(--zinc-dp);line-height:.7;
   margin-bottom:6px}
 .rev__stars{display:flex;gap:3px;margin-bottom:14px}
-.rev__stars svg{width:16px;height:16px;fill:var(--neon)}
+.rev__stars svg{width:16px;height:16px;fill:var(--red)}
 .rev__card p{font-size:15px;flex:1}
 .rev__by{display:flex;align-items:center;gap:12px;margin-top:22px;
   padding-top:20px;border-top:1px solid var(--line)}
-.rev__av{width:42px;height:42px;border-radius:50%;background:var(--brick);color:#fff;
+.rev__av{width:42px;height:42px;border-radius:50%;background:var(--red);color:#fff;
   display:grid;place-items:center;font-family:var(--disp);font-weight:800;font-size:15px;
   flex:none;letter-spacing:.04em}
 .rev__by b{display:block;font-size:14.5px;color:var(--tx-dark);font-family:var(--body);
@@ -386,7 +418,7 @@ ul{margin:0;padding:0;list-style:none}
 /* ==========================================================================
    CTA band
    ========================================================================== */
-.cta{background:var(--brick);position:relative;overflow:hidden;text-align:center}
+.cta{background:var(--ink);position:relative;overflow:hidden;text-align:center}
 .cta::before{content:"";position:absolute;inset:0;
   background:radial-gradient(120% 90% at 50% 0%,rgba(255,255,255,.14),transparent 62%)}
 .cta__in{position:relative}
@@ -404,11 +436,11 @@ ul{margin:0;padding:0;list-style:none}
   font-size:clamp(17px,2.1vw,21px);color:var(--tx-dark);line-height:1.25;
   transition:color .16s}
 .faq__item summary::-webkit-details-marker{display:none}
-.faq__item summary:hover{color:var(--brick)}
+.faq__item summary:hover{color:var(--red)}
 .faq__item summary::after{content:"";position:absolute;right:4px;top:50%;
-  width:15px;height:2.5px;background:var(--brick);transform:translateY(-50%)}
+  width:15px;height:2.5px;background:var(--red);transform:translateY(-50%)}
 .faq__item summary::before{content:"";position:absolute;right:10.2px;top:50%;
-  width:2.5px;height:15px;background:var(--brick);transform:translateY(-50%);
+  width:2.5px;height:15px;background:var(--red);transform:translateY(-50%);
   transition:transform .22s var(--ease);z-index:1}
 .faq__item[open] summary::before{transform:translateY(-50%) rotate(90deg)}
 .faq__a{padding:0 44px 24px 0;font-size:15.3px;color:var(--tx-mute);max-width:72ch}
@@ -423,15 +455,15 @@ ul{margin:0;padding:0;list-style:none}
 .foot__soc{display:flex;gap:9px;margin-top:22px}
 .foot__soc a{width:38px;height:38px;display:grid;place-items:center;border-radius:var(--r);
   border:1px solid var(--line-dk);transition:background .16s,color .16s,border-color .16s}
-.foot__soc a:hover{background:var(--brick);border-color:var(--brick);color:#fff}
+.foot__soc a:hover{background:var(--red);border-color:var(--red);color:#fff}
 .foot__soc svg{width:15px;height:15px;fill:currentColor}
 .foot h4{font-family:var(--mono);font-weight:700;font-size:11px;letter-spacing:.22em;
-  color:var(--neon);margin-bottom:18px;text-transform:uppercase}
+  color:var(--red-lt);margin-bottom:18px;text-transform:uppercase}
 .foot__links li{margin-bottom:11px}
 .foot__links a{transition:color .16s,padding-left .16s}
 .foot__links a:hover{color:#fff;padding-left:5px}
 .foot__c li{display:flex;gap:11px;margin-bottom:16px;align-items:flex-start}
-.foot__c svg{width:16px;height:16px;flex:none;margin-top:4px;fill:var(--brick-lt)}
+.foot__c svg{width:16px;height:16px;flex:none;margin-top:4px;fill:var(--red-lt)}
 .foot__c b{color:#fff;font-weight:600;display:block;font-size:15.5px}
 .foot__c small{font-size:12.5px;opacity:.75}
 .foot__bar{border-top:1px solid var(--line-dk);padding-block:22px;
@@ -440,7 +472,7 @@ ul{margin:0;padding:0;list-style:none}
 
 /* sticky mobile call bar */
 .callbar{position:fixed;left:0;right:0;bottom:0;z-index:90;display:flex;
-  background:var(--brick);box-shadow:0 -6px 24px -8px rgba(0,0,0,.4)}
+  background:var(--red);box-shadow:0 -6px 24px -8px rgba(0,0,0,.4)}
 .callbar a{flex:1;display:flex;align-items:center;justify-content:center;gap:9px;
   padding:15px 8px;font-family:var(--disp);font-weight:800;text-transform:uppercase;
   font-size:16px;letter-spacing:.05em;color:#fff}

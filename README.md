@@ -25,7 +25,7 @@ the source so you can find them fast (`grep -n PLACEHOLDER index.html`).
 | **Stat figures** | Stats band under the hero | `4.9★`, `2,400+ roofs`, `24/7` are invented. Replace with your real numbers or delete the band. |
 | **Testimonials** | Reviews section | The three reviews are written samples, not real customers. Swap in real, permissioned quotes. |
 | **"Certified Installer" badge** | Credentials row | Only claim a manufacturer certification you actually hold (GAF Master Elite, Owens Corning Preferred, etc.). |
-| **Email, address, license #** | Footer + JSON-LD | `hello@prominentroofing.com` and the bare "Memphis, TN" are stand-ins. |
+| **Address, license #** | Footer + JSON-LD | The bare "Memphis, TN" is a stand-in. The email (`info@prominentroofing.shop`) is live. |
 
 Also update the `url` and `canonical` if the domain isn't `prominentroofing.com`,
 and point the four social links (`href="#"`) at your real profiles.
@@ -44,12 +44,21 @@ under `--- estimate form ---`) so the browser posts normally.
 
 ## Design notes
 
-**Colour** — `#14161C` storm slate, `#1D2330` bluff, `#B3352C` Memphis brick,
-`#F2A93B` Beale marquee amber, `#EAECEF` zinc. The light sections use a cool
-zinc rather than the usual warm cream: it reads like galvanised flashing and
-shingle granules, which is the material the site is actually about. On dark
-grounds amber carries the emphasis so brick red stays legible as "this is a
-button."
+**Colour** — black and white with a single red accent. `#0C0E11` near-black,
+`#ECEDEF` zinc, `#565D66` slate, and `#CE1126` red (with `#F5333F` as the
+brighter value for dark grounds). The neutrals carry a faint cool cast rather
+than sitting on a dead grey axis — slate and galvanised zinc, the materials
+actually on a roof.
+
+Black, white and zinc carry all the mass. Red is spent only on actions and
+small marks — buttons, eyebrow labels, step numbers, the hero's second line —
+which is what makes it read as a pop rather than a second theme colour. Every
+red pairing clears WCAG AA in both directions.
+
+**Photography is monochrome** via a single CSS rule (search `grayscale` in
+`style.css`). The source JPEGs are untouched full-colour files, so deleting
+that one rule brings the colour back. Desaturating the photos is what lets the
+red hit as hard as it does.
 
 **Type** — Big Shoulders Display for headings (condensed American signage, the
 lettering you'd see on a work truck), Archivo for body, Space Mono for eyebrows,
@@ -57,9 +66,11 @@ stat labels, and anything data-like. All three are self-hosted, so there's no
 Google Fonts request and nothing to break if a CDN is blocked.
 
 **Signature** — the craftsmanship section is laid up in staggered shingle
-courses (a tiled SVG at ~6% white), with an amber drip-edge rule marking the top
-of the section. It's the one decorative move on the page; everything else stays
-quiet.
+courses (a tiled SVG at ~6% white). It's the one decorative move on the page;
+everything else stays quiet.
+
+**Service cards lead with photographs** of the actual work rather than generic
+icons, which is also where six of the seven supplied photos earn their keep.
 
 **Sections butt flush.** There are no gaps or margins between them — all vertical
 spacing lives inside sections via a single `.sec` utility, so backgrounds meet

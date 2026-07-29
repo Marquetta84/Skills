@@ -24,16 +24,22 @@ OUT = os.path.join(ROOT, "preview.html")
 
 # Width to downscale each photo to for the bundle. Aspect ratios are preserved,
 # so the width/height attributes in the markup stay correct and nothing shifts.
+#
+# Several photos appear twice in the page (once on a service card, once in the
+# projects grid), and a data URI cannot be shared between two <img> tags — each
+# occurrence carries its own copy. So these run leaner than they otherwise
+# would to keep the bundle from doubling. Production uses assets/img/ directly
+# and has no such constraint.
 PREVIEW_WIDTHS = {
-    "hero-gables.jpg": 1500,
-    "crew-shingle.jpg": 820,
-    "aerial-inspection.jpg": 760,
-    "tile-materials.jpg": 760,
-    "install-detail.jpg": 760,
-    "tearoff-crew.jpg": 760,
-    "storm-tearoff.jpg": 760,
+    "hero-gables.jpg": 1280,
+    "crew-shingle.jpg": 700,
+    "aerial-inspection.jpg": 640,
+    "tile-materials.jpg": 640,
+    "install-detail.jpg": 640,
+    "tearoff-crew.jpg": 640,
+    "storm-tearoff.jpg": 640,
 }
-PREVIEW_QUALITY = 70
+PREVIEW_QUALITY = 64
 
 BANNER = (
     '<div class="preview-note"><strong>Design preview</strong>'
@@ -43,12 +49,12 @@ BANNER = (
 
 BANNER_CSS = """
 /* preview-only chrome, not part of the delivered site */
-.preview-note{background:#241E14;color:#F0DFC0;
-  border-bottom:1px solid rgba(242,169,59,.34);
+.preview-note{background:#14161A;color:#E4E6E9;
+  border-bottom:1px solid rgba(206,17,38,.45);
   font-family:var(--mono);font-size:11.5px;line-height:1.5;letter-spacing:.02em;
   padding:9px clamp(20px,5vw,44px);display:flex;flex-wrap:wrap;gap:4px 12px;
   align-items:baseline}
-.preview-note strong{color:var(--neon);text-transform:uppercase;
+.preview-note strong{color:var(--red-lt);text-transform:uppercase;
   letter-spacing:.18em;font-weight:700;white-space:nowrap}
 """
 
