@@ -35,4 +35,20 @@ document.addEventListener('DOMContentLoaded', function () {
       answer.style.maxHeight = !wasOpen ? answer.scrollHeight + 'px' : null;
     });
   });
+
+  var contactForm = document.getElementById('contact-form');
+  if (contactForm) {
+    contactForm.addEventListener('submit', function (e) {
+      e.preventDefault();
+      if (!contactForm.checkValidity()) {
+        contactForm.reportValidity();
+        return;
+      }
+      var success = document.getElementById('form-success');
+      success.style.display = 'block';
+      success.setAttribute('tabindex', '-1');
+      success.focus();
+      contactForm.reset();
+    });
+  }
 });
