@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 700" width="900" height="700" role="img" preserveAspectRatio="xMidYMid slice">
+<defs>
+<linearGradient id="sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0.000" stop-color="#1D4F7C"/><stop offset="0.250" stop-color="#3E7BA8"/><stop offset="0.500" stop-color="#7FAAC8"/><stop offset="0.750" stop-color="#B9D2E0"/><stop offset="1.000" stop-color="#DCE8EE"/></linearGradient>
+<radialGradient id="sun" cx="0.22" cy="0.84" r=".62">
+<stop offset="0" stop-color="#FFFFFF" stop-opacity=".78"/>
+<stop offset=".30" stop-color="#FFFFFF" stop-opacity=".26"/>
+<stop offset="1" stop-color="#FFFFFF" stop-opacity="0"/>
+</radialGradient>
+<linearGradient id="vig" x1="0" y1="0" x2="0" y2="1">
+<stop offset="0" stop-color="#080C10" stop-opacity=".40"/>
+<stop offset=".40" stop-color="#080C10" stop-opacity="0"/>
+<stop offset="1" stop-color="#080C10" stop-opacity=".34"/>
+</linearGradient>
+<filter id="blur" x="-40%" y="-40%" width="180%" height="180%"><feGaussianBlur stdDeviation="20"/></filter>
+<filter id="halo" x="-120%" y="-120%" width="340%" height="340%"><feGaussianBlur stdDeviation="6.3"/></filter>
+<filter id="grain"><feTurbulence type="fractalNoise" baseFrequency=".9" numOctaves="3" seed="11"/><feColorMatrix type="saturate" values="0"/></filter>
+</defs>
+<rect width="900" height="700" fill="url(#sky)"/>
+<rect width="900" height="700" fill="url(#sun)"/><g filter="url(#blur)" fill="#FFFFFF" fill-opacity="0.16"><ellipse cx="601" cy="152" rx="287" ry="22"/><ellipse cx="664" cy="135" rx="264" ry="26"/><ellipse cx="282" cy="100" rx="209" ry="46"/><ellipse cx="421" cy="324" rx="259" ry="28"/></g><polygon points="-45,700 -45,584 -3,582 38,582 87,589 135,602 170,586 198,566 233,563 294,590 353,562 402,601 443,571 478,591 513,589 567,585 607,570 668,588 692,554 748,563 792,590 821,587 862,599 913,566 936,561 945,602 945,700" fill="#17251E" fill-opacity="0.85"/><polygon points="735,665 735,580 692,580 692,487 596,389 500,487 500,526 421,526 318,411 268,411 164,539 93,539 93,665" fill="#0B0F13"/><rect x="285" y="340" width="41" height="130" fill="#0B0F13"/><polyline points="735,580 692,580 692,487 596,389 500,487 500,526 421,526 318,411 268,411 164,539 93,539" fill="none" stroke="#EAF3F8" stroke-opacity=".9" stroke-width="2.0" stroke-linejoin="round" filter="url(#halo)"/><polyline points="735,580 692,580 692,487 596,389 500,487 500,526 421,526 318,411 268,411 164,539 93,539" fill="none" stroke="#EAF3F8" stroke-opacity=".75" stroke-width="0.9" stroke-linejoin="round"/><g stroke="#EAF3F8" stroke-opacity=".50" stroke-width="2.0" fill="none" stroke-linecap="round"><line x1="630" y1="676" x2="600" y2="517"/><line x1="653" y1="676" x2="623" y2="517"/><line x1="630" y1="676" x2="653" y2="676"/><line x1="625" y1="650" x2="648" y2="650"/><line x1="620" y1="623" x2="643" y2="623"/><line x1="615" y1="597" x2="638" y2="597"/><line x1="610" y1="570" x2="633" y2="570"/><line x1="605" y1="544" x2="628" y2="544"/><line x1="600" y1="517" x2="623" y2="517"/></g><rect width="900" height="700" fill="url(#vig)"/><rect width="900" height="700" filter="url(#grain)" opacity=".05"/></svg>
