@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Site Editing Guide — Prominent Roofing Co.</title>
+<style>
+  :root {
+    --red: #E31B23;
+    --ink: #15171B;
+    --soft: #52565C;
+    --bg-soft: #F7F6F5;
+    --border: #E7E5E3;
+  }
+  * { box-sizing: border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    color: var(--ink);
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 48px 24px 100px;
+    line-height: 1.6;
+    font-size: 16px;
+  }
+  h1 { font-size: 2rem; margin-bottom: 4px; }
+  .subtitle { color: var(--soft); margin-top: 0; margin-bottom: 40px; }
+  h2 {
+    font-size: 1.3rem;
+    margin-top: 48px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid var(--red);
+  }
+  h3 { font-size: 1.05rem; margin-bottom: 4px; }
+  .step {
+    background: var(--bg-soft);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 20px 24px;
+    margin: 16px 0;
+  }
+  .step + .step { margin-top: 12px; }
+  .find {
+    display: inline-block;
+    background: #fff;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 2px 8px;
+    font-family: ui-monospace, "SF Mono", Menlo, monospace;
+    font-size: 0.88rem;
+    color: var(--red);
+  }
+  .file {
+    display: inline-block;
+    background: var(--ink);
+    color: #fff;
+    border-radius: 6px;
+    padding: 2px 9px;
+    font-family: ui-monospace, "SF Mono", Menlo, monospace;
+    font-size: 0.82rem;
+  }
+  table { width: 100%; border-collapse: collapse; margin: 16px 0; }
+  td, th { text-align: left; padding: 10px 12px; border-bottom: 1px solid var(--border); vertical-align: top; font-size: 0.94rem; }
+  th { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.04em; color: var(--soft); }
+  .warn {
+    background: #FDECEC;
+    border: 1px solid #F6C2C4;
+    border-radius: 10px;
+    padding: 16px 20px;
+    margin: 20px 0;
+  }
+  .warn strong { color: var(--red); }
+  code { font-family: ui-monospace, "SF Mono", Menlo, monospace; background: var(--bg-soft); padding: 1px 5px; border-radius: 4px; font-size: 0.9em; }
+  a { color: var(--red); }
+  ol, ul { padding-left: 22px; }
+  li { margin-bottom: 6px; }
+</style>
+</head>
+<body>
+
+<h1>Editing Your Website — Plain-English Guide</h1>
+<p class="subtitle">For Prominent Roofing Co. · keep this page open in one tab while you edit in another</p>
+
+<h2>1. How to open a file to edit</h2>
+<div class="step">
+  <ol>
+    <li>Log into Hostinger → <strong>File Manager</strong></li>
+    <li>Open <span class="file">public_html</span></li>
+    <li>Right-click the file you want (e.g. <span class="file">index.html</span>) → <strong>Edit</strong></li>
+    <li>This opens a code editor in your browser. It looks technical, but you only need to touch the plain English sentences — leave anything inside <code>&lt;...&gt;</code> alone.</li>
+    <li>Use <strong>Ctrl+F</strong> (Windows) or <strong>Cmd+F</strong> (Mac) inside the editor to search for text, so you don't have to scroll and hunt.</li>
+    <li>Make your change, then click <strong>Save</strong> in the editor. Refresh your website in a new tab to see it live.</li>
+  </ol>
+</div>
+
+<div class="warn">
+  <strong>Before you edit anything:</strong> download a fresh backup zip from File Manager (select everything in <span class="file">public_html</span> → Compress) before making changes. If something breaks, you can re-upload the backup and start over. Never delete a <code>&lt;</code> or <code>&gt;</code> symbol — those hold the page together.
+</div>
+
+<h2>2. Which file is which page</h2>
+<table>
+  <tr><th>File</th><th>Page</th></tr>
+  <tr><td><span class="file">index.html</span></td><td>Home</td></tr>
+  <tr><td><span class="file">about.html</span></td><td>About</td></tr>
+  <tr><td><span class="file">services.html</span></td><td>Services</td></tr>
+  <tr><td><span class="file">contact.html</span></td><td>Contact</td></tr>
+</table>
+<p>Every page also has the header (logo/menu/phone) and footer at the top and bottom of the file — those are identical copy-pasted blocks on all 4 pages, so if you change the phone number, do it on <strong>all 4 files</strong>.</p>
+
+<h2>3. Common edits</h2>
+
+<div class="step">
+  <h3>Change the phone number</h3>
+  <p>Search for <span class="find">857-5181</span> in each of the 4 files. It appears 2–3 times per file (desktop menu, mobile menu, footer). Change the number in two places each time it appears:</p>
+  <ul>
+    <li>The text you see, e.g. <code>(901) 857-5181</code></li>
+    <li>The hidden tappable link just before it, e.g. <code>tel:19018575181</code> — same digits, no spaces or symbols, with a leading <code>1</code></li>
+  </ul>
+</div>
+
+<div class="step">
+  <h3>Change the email address</h3>
+  <p>Search for <span class="find">info@prominentroofing.com</span> in each file — same idea, it appears in the text and inside a <code>mailto:</code> link right before it.</p>
+</div>
+
+<div class="step">
+  <h3>Change headlines / paragraphs / button text</h3>
+  <p>All the sentences on the site are in plain English inside the code — search for a few words from the sentence you want to change (Ctrl+F) and type your replacement between the same <code>&gt;</code> and <code>&lt;</code> symbols. Example: to change the Home page headline, search <span class="find">Memphis's Most Trusted Roofing Experts</span> in <span class="file">index.html</span>.</p>
+</div>
+
+<div class="step">
+  <h3>Change the 6 services on the Services page</h3>
+  <p>In <span class="file">services.html</span>, search <span class="find">SERVICE BLOCK</span> — you'll find 6 labeled sections (Replacement, Repair, Storm Claims, Inspections, Gutters, Commercial). Each one has its own heading, paragraph, and 3-item checklist you can edit independently.</p>
+</div>
+
+<div class="step">
+  <h3>Change a photo</h3>
+  <p>Easiest method: keep the exact same file name. In File Manager, go to the <span class="file">images</span> folder, delete the old photo, and upload your new photo <strong>using the exact same file name</strong> (e.g. your new hero photo must also be named <code>hero-roof-install.jpg</code>). The website will pick it up automatically — no code editing needed.</p>
+  <p>If you want to use a different file name, you'll need to also update the matching <code>src="images/...jpg"</code> line in the HTML file.</p>
+</div>
+
+<div class="step">
+  <h3>Change the colors</h3>
+  <p>Open <span class="file">css/style.css</span> — the first ~25 lines are labeled <span class="find">EDIT ME: SITE-WIDE COLORS</span>. Each line is one color used across the whole site (main red, dark text, backgrounds, etc). Change the 6-character code (like <code>#E31B23</code>) and it updates everywhere at once. Search "hex color picker" online to find new codes.</p>
+</div>
+
+<div class="step">
+  <h3>Change business hours / service area</h3>
+  <p>Search <span class="find">Mon&ndash;Sat: 7am</span> (Contact and footer) and <span class="find">Germantown, Cordova, Bartlett</span> (Contact page) to update these.</p>
+</div>
+
+<h2>4. The contact form still needs one more step</h2>
+<div class="warn">
+  <strong>Heads up:</strong> the form on the Contact page currently just shows a "thanks" message on screen — it doesn't email you yet. Before going live, connect it to either:
+  <ul>
+    <li><strong>Hostinger's built-in email form handler</strong> (ask their support, or I can wire this up for you), or</li>
+    <li><strong>Formspree</strong> (formspree.io) — free, sign up, get a form link, and I can point the form at it in about 2 minutes.</li>
+  </ul>
+  Just tell me which one and I'll make the code change.
+</div>
+
+<h2>5. If something looks broken</h2>
+<p>The most common cause is an accidentally deleted <code>&lt;</code>, <code>&gt;</code>, or <code>"</code> symbol near where you edited. Undo your last edit (or re-upload your backup zip), and try again — just change the plain-English words, nothing else.</p>
+
+<p style="margin-top:56px;color:var(--soft);font-size:0.9rem;">Anything not covered here — just ask, and I'll either make the edit for you or add it to this guide.</p>
+
+</body>
+</html>

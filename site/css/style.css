@@ -1,18 +1,27 @@
 @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,600&display=swap');
 
-/* ---------- Design tokens ---------- */
+/* ==========================================================
+   EDIT ME: SITE-WIDE COLORS
+   Change a value below and it updates EVERYWHERE on the site
+   at once (buttons, links, headings, footer, etc).
+   Colors are 6-character codes, e.g. #E31B23 = red.
+   Google "hex color picker" if you want to find a new code.
+   ========================================================== */
 :root {
-  --color-primary: #E31B23;
-  --color-primary-dark: #B3141B;
-  --color-primary-light: #FDECEC;
-  --color-ink: #15171B;
-  --color-ink-soft: #52565C;
-  --color-ink-faint: #8A8E94;
-  --color-bg: #FFFFFF;
-  --color-bg-soft: #F7F6F5;
-  --color-bg-dark: #15171B;
-  --color-border: #E7E5E3;
+  --color-primary: #E31B23;       /* Main red - buttons, links, accents */
+  --color-primary-dark: #B3141B;  /* Darker red - button hover state */
+  --color-primary-light: #FDECEC; /* Pale red - icon backgrounds */
+  --color-ink: #15171B;           /* Main dark text / footer background */
+  --color-ink-soft: #52565C;      /* Lighter gray body text */
+  --color-ink-faint: #8A8E94;     /* Faintest gray text (small labels) */
+  --color-bg: #FFFFFF;            /* Page background (white) */
+  --color-bg-soft: #F7F6F5;       /* Light gray section background */
+  --color-bg-dark: #15171B;       /* Footer background */
+  --color-border: #E7E5E3;        /* Thin lines around cards/sections */
 
+  /* EDIT ME: SITE-WIDE FONT
+     To change the font, swap the name below AND update the
+     Google Fonts link at the very top of this file to match. */
   --font-display: 'Plus Jakarta Sans', sans-serif;
   --font-body: 'Plus Jakarta Sans', sans-serif;
 
