@@ -161,35 +161,12 @@ section { padding: 88px 0; }
 .logo {
   display: flex;
   align-items: center;
-  gap: 12px;
-  color: var(--color-ink);
   white-space: nowrap;
 }
-.logo-mark {
-  width: 34px;
-  height: 34px;
-  flex-shrink: 0;
-}
-.logo-text {
-  display: flex;
-  flex-direction: column;
-  line-height: 1;
-}
-.logo-main {
-  font-family: var(--font-display);
-  font-weight: 800;
-  font-size: 1.28rem;
-  letter-spacing: -0.01em;
-  color: var(--color-ink);
-}
-.logo-sub {
-  font-family: var(--font-display);
-  font-weight: 700;
-  font-size: 0.62rem;
-  letter-spacing: 0.24em;
-  text-transform: uppercase;
-  color: var(--color-primary);
-  margin-top: 4px;
+.logo-img {
+  height: 52px;
+  width: auto;
+  display: block;
 }
 
 .main-nav { display: flex; align-items: center; gap: 36px; }
