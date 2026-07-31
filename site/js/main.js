@@ -36,19 +36,23 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   });
 
-  var contactForm = document.getElementById('contact-form');
-  if (contactForm) {
-    contactForm.addEventListener('submit', function (e) {
+  function wireForm(formId, successId) {
+    var form = document.getElementById(formId);
+    if (!form) return;
+    form.addEventListener('submit', function (e) {
       e.preventDefault();
-      if (!contactForm.checkValidity()) {
-        contactForm.reportValidity();
+      if (!form.checkValidity()) {
+        form.reportValidity();
         return;
       }
-      var success = document.getElementById('form-success');
+      var success = document.getElementById(successId);
       success.style.display = 'block';
       success.setAttribute('tabindex', '-1');
       success.focus();
-      contactForm.reset();
+      form.reset();
     });
   }
+
+  wireForm('contact-form', 'form-success');
+  wireForm('home-contact-form', 'home-form-success');
 });
