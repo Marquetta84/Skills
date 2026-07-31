@@ -76,7 +76,7 @@
   <!-- QUICK NAV: the 6 small icon buttons that jump down the page -->
   <section style="padding:40px 0;">
     <div class="container">
-      <div class="card-grid cols-6">
+      <div class="card-grid cols-6" style="grid-template-columns:repeat(3,1fr);max-width:640px;margin:0 auto;">
         <a href="#roof-replacement" class="service-card compact text-center" style="padding:20px 12px;">
           <div class="service-icon" style="margin:0 auto 10px;width:44px;height:44px;">
             <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12l9-8 9 8"/><path d="M5 10v10h14V10"/></svg>
@@ -94,24 +94,6 @@
             <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2l8 4v6c0 5-3.4 8.4-8 10-4.6-1.6-8-5-8-10V6l8-4z"/></svg>
           </div>
           <span style="font-weight:700;font-size:0.85rem;">Storm Claims</span>
-        </a>
-        <a href="#inspections" class="service-card compact text-center" style="padding:20px 12px;">
-          <div class="service-icon" style="margin:0 auto 10px;width:44px;height:44px;">
-            <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.35-4.35"/></svg>
-          </div>
-          <span style="font-weight:700;font-size:0.85rem;">Inspections</span>
-        </a>
-        <a href="#gutters" class="service-card compact text-center" style="padding:20px 12px;">
-          <div class="service-icon" style="margin:0 auto 10px;width:44px;height:44px;">
-            <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 5h16M4 5l1 14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2l1-14M9 9v8M15 9v8"/></svg>
-          </div>
-          <span style="font-weight:700;font-size:0.85rem;">Gutters</span>
-        </a>
-        <a href="#commercial" class="service-card compact text-center" style="padding:20px 12px;">
-          <div class="service-icon" style="margin:0 auto 10px;width:44px;height:44px;">
-            <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 21h18M5 21V7l7-4 7 4v14M9 21v-6h6v6"/></svg>
-          </div>
-          <span style="font-weight:700;font-size:0.85rem;">Commercial</span>
         </a>
       </div>
     </div>
@@ -192,81 +174,6 @@
     </div>
   </section>
 
-  <!-- SERVICE BLOCK 4: Roof Inspections -->
-  <section id="inspections" style="background:var(--color-bg-soft);">
-    <div class="container split reverse">
-      <div>
-        <div class="eyebrow">04 &nbsp;&bull;&nbsp; Roof Inspections</div>
-        <h2>A Clear, No-Pressure Look At Your Roof</h2>
-        <p>Buying a home, selling one, or just want peace of mind? Our inspection covers shingles, flashing, ventilation, and the attic when accessible &mdash; then you get a written report with photos, not a sales pitch.</p>
-        <ul class="check-list">
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M8 12l3 3 5-6"/></svg> Full written report with photos</li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M8 12l3 3 5-6"/></svg> Pre-listing &amp; pre-purchase inspections</li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M8 12l3 3 5-6"/></svg> No obligation, no pressure</li>
-        </ul>
-        <a href="contact.html" class="btn btn-primary">
-          Get A Free Quote
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-        </a>
-      </div>
-      <div class="split-media">
-        <div style="border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow-md);aspect-ratio:4/3;">
-          <img src="images/about-detail.jpg" alt="Roofer closely inspecting shingle installation" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block;object-position:center 25%;">
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- SERVICE BLOCK 5: Gutter Services -->
-  <section id="gutters">
-    <div class="container split">
-      <div class="split-media">
-        <div style="border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow-md);aspect-ratio:4/3;">
-          <img src="images/about-quality-gables.jpg" alt="Rooflines and eaves on a Memphis-area home" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block;">
-        </div>
-      </div>
-      <div>
-        <div class="eyebrow">05 &nbsp;&bull;&nbsp; Gutter Services</div>
-        <h2>Keep Water Away From Your Foundation</h2>
-        <p>A great roof still fails if water has nowhere to go. We install seamless gutters sized for your roofline, repair sagging or leaking sections, and add guards that cut down on ladder time and clogged downspouts.</p>
-        <ul class="check-list">
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M8 12l3 3 5-6"/></svg> Seamless gutter installation &amp; repair</li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M8 12l3 3 5-6"/></svg> Gutter guards &amp; downspout upgrades</li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M8 12l3 3 5-6"/></svg> Fascia &amp; soffit repair as needed</li>
-        </ul>
-        <a href="contact.html" class="btn btn-primary">
-          Get A Free Quote
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-        </a>
-      </div>
-    </div>
-  </section>
-
-  <!-- SERVICE BLOCK 6: Commercial Roofing -->
-  <section id="commercial" style="background:var(--color-bg-soft);">
-    <div class="container split reverse">
-      <div>
-        <div class="eyebrow">06 &nbsp;&bull;&nbsp; Commercial Roofing</div>
-        <h2>Flat &amp; Low-Slope Systems That Minimize Downtime</h2>
-        <p>Retail, office, and industrial roofs need a crew that works around your business, not the other way around. We handle TPO, EPDM, and modified bitumen systems with scheduling built to keep tenants and operations running.</p>
-        <ul class="check-list">
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M8 12l3 3 5-6"/></svg> TPO, EPDM &amp; modified bitumen systems</li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M8 12l3 3 5-6"/></svg> After-hours &amp; phased scheduling available</li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M8 12l3 3 5-6"/></svg> Preventive maintenance programs</li>
-        </ul>
-        <a href="contact.html" class="btn btn-primary">
-          Get A Free Quote
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-        </a>
-      </div>
-      <div class="split-media">
-        <div style="border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow-md);aspect-ratio:4/3;">
-          <img src="images/new-construction-tile-roof.jpg" alt="Large-scale roof structure under construction" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block;">
-        </div>
-      </div>
-    </div>
-  </section>
-
   <!-- CTA BANNER: red "Not Sure Which Service" banner -->
   <section>
     <div class="container">
@@ -314,7 +221,6 @@
           <li><a href="services.html#roof-replacement">Roof Replacement</a></li>
           <li><a href="services.html#roof-repair">Roof Repair</a></li>
           <li><a href="services.html#storm-insurance">Storm &amp; Insurance Claims</a></li>
-          <li><a href="services.html#commercial">Commercial Roofing</a></li>
         </ul>
       </div>
       <div class="footer-col">
