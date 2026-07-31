@@ -39,20 +39,47 @@ document.addEventListener('DOMContentLoaded', function () {
   function wireForm(formId, successId) {
     var form = document.getElementById(formId);
     if (!form) return;
+    var action = form.getAttribute('action');
+    var submitBtn = form.querySelector('button[type="submit"]');
+
     form.addEventListener('submit', function (e) {
       e.preventDefault();
       if (!form.checkValidity()) {
         form.reportValidity();
         return;
       }
+
       var success = document.getElementById(successId);
-      success.style.display = 'block';
-      success.setAttribute('tabindex', '-1');
-      success.focus();
-      form.reset();
+      var showSuccess = function () {
+        success.style.display = 'block';
+        success.setAttribute('tabindex', '-1');
+        success.focus();
+        form.reset();
+      };
+
+      if (!action) {
+        showSuccess();
+        return;
+      }
+
+      if (submitBtn) submitBtn.disabled = true;
+      fetch(action, {
+        method: 'POST',
+        body: new FormData(form),
+        headers: { 'Accept': 'application/json' }
+      }).then(function (response) {
+        if (response.ok) {
+          showSuccess();
+        } else {
+          window.alert('Something went wrong sending your request. Please call us instead at (901) 857-5181.');
+        }
+      }).catch(function () {
+        window.alert('Something went wrong sending your request. Please call us instead at (901) 857-5181.');
+      }).finally(function () {
+        if (submitBtn) submitBtn.disabled = false;
+      });
     });
   }
 
   wireForm('contact-form', 'form-success');
-  wireForm('home-contact-form', 'home-form-success');
 });
